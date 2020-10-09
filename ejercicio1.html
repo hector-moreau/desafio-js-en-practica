@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <div class="resultado" style="color:green;font-style: italic">
+            </div>
+            <form id="formulario">
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="submit">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Escríbe aquí tu código
+    let form = document.getElementById("formulario")
+    form.addEventListener('submit', function(event){
+    event.preventDefault()
+    if(validName() && validSubject() && validMessage()){
+
+        }else{
+            return false
+        }
+    })
+    function validName(){
+        let name = document.getElementById('nombre').value
+        // let pattern = /[a-z\s\u00C0-\u00FF]+/i
+        // let pattern = /[A-za-z]+$/
+        //    let pattern = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+              let pattern = /^[a-zA-ZÀ-ÿ/u00f1/u00d1]+(\s*[a-zA-ZÀ-ÿ/u00f1/u00d1]*)*[a-zA-ZÀ-ÿ/u00f1/u00d1]+$/g;
+        let nameError = document.getElementsByClassName('errorNombre')[0]
+        if(pattern.test(name)){
+            nameError.innerText = ''
+            return true
+        }else{        
+            nameError.innerText = 'Nombre incorrecto'
+        }
+    }
+    function validSubject(){
+    // function validMessage(){
+        let name = document.getElementById('asunto').value
+        // let pattern = /[A-za-z]+$/
+        let pattern = /^[a-zA-ZÀ-ÿ/u00f1/u00d1]+(\s*[a-zA-ZÀ-ÿ/u00f1/u00d1]*)*[a-zA-ZÀ-ÿ/u00f1/u00d1]+$/g;
+        let asuntoError = document.getElementsByClassName('errorAsunto')[0]
+        if(pattern.test(name)){
+            asuntoError.innerText = ''
+            return true
+        }else{
+            
+            asuntoError.innerText = 'Asunto incorrecto'
+        }
+    }
+    function validMessage(){
+    // function validSubject(){
+        let name = document.getElementById('mensaje').value
+        // let pattern = /^[A-Za-z]+$/
+           let pattern = /^[a-zA-ZÀ-ÿ/u00f1/u00d1]+(\s*[a-zA-ZÀ-ÿ/u00f1/u00d1]*)*[a-zA-ZÀ-ÿ/u00f1/u00d1]+$/g;
+        let mensajeError = document.getElementsByClassName('errorMensaje')[0]
+        if(pattern.test(name)){
+            mensajeError.innerText = ''
+            return true
+        }else{
+            
+            mensajeError.innerText = 'Mensaje incorrecto'
+        }
+    }
+    </script>
+</body>
+
+</html>
